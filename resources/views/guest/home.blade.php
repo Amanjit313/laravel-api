@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="{{ asset('css/front/style.css') }}">
 </head>
 <body>
-    <div>CIAO</div>
+
+    <div id="app">
+
+    </div>
+
+    <script src="{{ asset('js/front.js') }}"></script>
 </body>
 </html>
