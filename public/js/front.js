@@ -1910,10 +1910,19 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
+  data: function data() {
+    return {
+      apiUrl: '/api/posts',
+      posts: {}
+    };
+  },
   methods: {
     getApi: function getApi() {
-      axios.get('/api/posts').then(function (response) {
-        console.log(response.data);
+      var _this = this;
+
+      axios.get(this.apiUrl).then(function (response) {
+        console.log(response.data.posts);
+        _this.posts = response.data.posts;
       });
     }
   },
@@ -1939,7 +1948,13 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div");
+  return _c("div", {
+    staticClass: "container"
+  }, _vm._l(_vm.posts, function (post) {
+    return _c("li", {
+      key: post.id
+    }, [_c("p", [_vm._v(_vm._s(post.name))])]);
+  }), 0);
 };
 
 var staticRenderFns = [];
